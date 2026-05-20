@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://2iepm616hbgv"]
+
+[ext_resource type="Script" uid="uid://ca6qgckdh0pah" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://c2qdn8tao01c0" path="res://scripts/player_spawner.gd" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://d3a2liyb8x0ay" path="res://scenes/player/player.tscn" id="3_sugp2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uqj2r"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_s4h7g"]
+sky_material = SubResource("ProceduralSkyMaterial_uqj2r")
+
+[sub_resource type="Environment" id="Environment_5l0vc"]
+background_mode = 2
+sky = SubResource("Sky_s4h7g")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sptne"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uqj2r"]
+
+[node name="Node3D" type="Node3D" unique_id=401514237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9814131, 0)
+script = ExtResource("1_o5qli")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=417211724]
+environment = SubResource("Environment_5l0vc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1221418355]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=506909810]
+transform = Transform3D(11.063055, 0, 0, 0, 1.0000002, 0, 0, 0, 9.052599, 0, 0, 0)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=929324724]
+shape = SubResource("BoxShape3D_sptne")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1210420198]
+mesh = SubResource("BoxMesh_uqj2r")
+
+[node name="pSpawn" type="Node3D" parent="." unique_id=1730929577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.4888945, 0)
+
+[node name="Players" type="Node3D" parent="." unique_id=2098498225]
+script = ExtResource("2_0wfyh")
+player_scene = ExtResource("3_sugp2")

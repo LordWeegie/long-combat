@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bhr4wfin0i7ip"]
+
+[ext_resource type="Script" uid="uid://bgdq10bt8rx10" path="res://scripts/menu.gd" id="1_eaaqv"]
+
+[node name="Menu" type="Control" unique_id=1583540486]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eaaqv")
+
+[node name="Create" type="Button" parent="." unique_id=2120132243]
+layout_mode = 0
+offset_right = 156.0
+offset_bottom = 70.0
+text = "Create"
+
+[node name="Join" type="Button" parent="." unique_id=1107129379]
+layout_mode = 0
+offset_left = 157.0
+offset_right = 314.0
+offset_bottom = 71.0
+text = "Join"
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=257765413]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 68.0
+offset_right = 157.0
+offset_bottom = 99.0
+placeholder_text = "Session ID"
+
+[node name="Label" type="Label" parent="." unique_id=1550570563]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 72.0
+offset_right = 237.0
+offset_bottom = 95.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1982813639]
+position = Vector2(476, 398)
+zoom = Vector2(0.585, 0.585)
+
+[node name="Button" type="Button" parent="." unique_id=1332712703]
+layout_mode = 0
+offset_left = 311.0
+offset_top = -2.0
+offset_right = 402.0
+offset_bottom = 29.0
+text = "Load Level"
+
+[connection signal="pressed" from="Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
