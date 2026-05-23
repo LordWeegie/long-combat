@@ -7,6 +7,7 @@ func _ready() -> void:
 	GDSync.client_joined.connect(client_joined)
 	GDSync.client_left.connect(client_left)
 func client_joined(client_id : int) -> void:
+	if not GDSync.is_host(): return
 	print("Client joined ", client_id)
 	# Check if the client that just joined is our own local client
 	if client_id == GDSync.get_client_id():

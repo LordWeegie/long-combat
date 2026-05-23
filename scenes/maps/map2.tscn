@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://b2xs02hh2a6dm"]
+
+[ext_resource type="Script" uid="uid://sa1645bfdlqq" path="res://scripts/map_2.gd" id="1_33h1h"]
+[ext_resource type="PackedScene" uid="uid://d12kjsic5lgqe" path="res://assets/map_models/alien_island.tscn" id="1_g2u6i"]
+[ext_resource type="PackedScene" uid="uid://d3a2liyb8x0ay" path="res://scenes/player/player.tscn" id="2_33h1h"]
+[ext_resource type="PackedScene" uid="uid://cswee65fshuss" path="res://assets/player/players.glb" id="4_m0brp"]
+[ext_resource type="PackedScene" uid="uid://cir6t6xwlahe3" path="res://assets/items/gun.fbx" id="5_g86sx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g2u6i"]
+sky_top_color = Color(0, 0, 1, 1)
+sky_horizon_color = Color(0.41959536, 0.4088111, 0.8401836, 1)
+ground_bottom_color = Color(0.31764707, 0.27450982, 1, 1)
+ground_horizon_color = Color(0.41959536, 0.4088111, 0.8401836, 1)
+
+[sub_resource type="Sky" id="Sky_33h1h"]
+sky_material = SubResource("ProceduralSkyMaterial_g2u6i")
+
+[sub_resource type="Environment" id="Environment_m0brp"]
+background_mode = 2
+sky = SubResource("Sky_33h1h")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g86sx"]
+height = 2.990265
+radius = 3.9916992
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m0brp"]
+size = Vector3(1, 9.752991, 6.2836304)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g86sx"]
+size = Vector3(3.1622314, 3.4053955, 4.4503784)
+
+[node name="Map2" type="Node3D" unique_id=1492872750]
+script = ExtResource("1_33h1h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1264198888]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.42352942, 1, 0.42352942, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1841878462]
+environment = SubResource("Environment_m0brp")
+
+[node name="alien_island" parent="." unique_id=2010598015 instance=ExtResource("1_g2u6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02480936, 0, 0.7372341)
+
+[node name="player" parent="." unique_id=1458099324 instance=ExtResource("2_33h1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11725044, 3.7307532, 1.8077383)
+
+[node name="alien_island2" parent="." unique_id=651172948 instance=ExtResource("1_g2u6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.765394, 0, 1.3238916)
+
+[node name="alien_island3" parent="." unique_id=408907602 instance=ExtResource("1_g2u6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.388235, 0, -18.607573)
+
+[node name="alien_island4" parent="." unique_id=385561360 instance=ExtResource("1_g2u6i")]
+transform = Transform3D(5.061136, 0, 0, 0, 4.3477216, 0, 0, 0, 5.379928, 22.593414, -11.1315, -44.656044)
+
+[node name="CollisionShape3D" parent="alien_island4/StaticBody3D" parent_id_path=PackedInt32Array(385561360, 1962411474) index="0" unique_id=2054175775]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.15752554, 2.2948256, 0.021606445)
+shape = SubResource("CylinderShape3D_g86sx")
+
+[node name="players" parent="." unique_id=1069411818 instance=ExtResource("4_m0brp")]
+transform = Transform3D(0.00729735, -0.19986674, -4.7184888e-11, 0.013294676, 0.0004854014, 0.19955702, -0.19942412, -0.0072811893, 0.013303533, 20.871532, 5.4892116, -42.51559)
+
+[node name="Skeleton3D" parent="players/Armature" parent_id_path=PackedInt32Array(1069411818, 655339122) index="0" unique_id=841794131]
+bones/0/position = Vector3(-0.015946388, -5.21709, -363.2312)
+bones/0/rotation = Quaternion(0.70710707, -0.00011182222, -0.000119690034, -0.7071066)
+bones/1/rotation = Quaternion(0.008893742, 4.1001713e-06, -0.00016375193, 0.9999605)
+bones/7/rotation = Quaternion(0.53206795, 0.4661556, -0.529091, 0.46868464)
+bones/8/position = Vector3(-7.1934267e-07, 67.118324, -0.00010414699)
+bones/8/rotation = Quaternion(0.6078295, -0.022450145, 0.030329082, 0.7931705)
+bones/9/position = Vector3(-2.2903318e-06, 99.22123, -2.7291571e-06)
+bones/9/rotation = Quaternion(-2.5707118e-07, -0.002880338, -3.1894885e-07, 0.9999958)
+bones/10/position = Vector3(-1.0968755e-06, 135.994, 1.8074894e-05)
+bones/10/rotation = Quaternion(-2.672176e-07, 0.00012745526, 2.3496662e-07, 1)
+bones/11/position = Vector3(6.216842e-07, 46.88987, -6.475828e-06)
+bones/11/rotation = Quaternion(2.1324935e-07, 9.599118e-05, 1.5114897e-07, 1)
+bones/12/position = Vector3(1.817941e-06, 36.996597, 1.3908837e-05)
+bones/12/rotation = Quaternion(-0.005521763, -1.3508655e-07, 0.006322191, 0.9999648)
+bones/13/position = Vector3(0.6879101, 54.397575, 0.6007813)
+bones/13/rotation = Quaternion(0.0589973, 0.0017134476, -0.22269048, 0.9731009)
+bones/14/position = Vector3(-6.4925437, 13.85155, -1.613533)
+bones/15/rotation = Quaternion(0.53035253, -0.46758366, 0.53090763, 0.4671498)
+bones/16/position = Vector3(1.2036883e-06, 67.11831, 2.5022033e-05)
+bones/16/rotation = Quaternion(0.06365, -0.001086, -0.011605, 0.811922)
+bones/17/position = Vector3(-6.7269525e-07, 99.197105, -9.565487e-06)
+bones/17/rotation = Quaternion(-4.1178924e-07, -0.00010639885, -1.17179315e-08, 1)
+bones/18/position = Vector3(-1.2879179e-06, 135.96376, 7.826213e-06)
+bones/18/rotation = Quaternion(-1.6398066e-07, -0.0001466226, -7.855534e-09, 1)
+bones/19/position = Vector3(7.7344225e-08, 66.47332, -5.475218e-06)
+bones/19/rotation = Quaternion(-1.0811253e-07, -0.00040549607, 2.2292534e-07, 0.99999994)
+bones/20/position = Vector3(-1.7881393e-07, 30.421047, -3.056042e-05)
+bones/20/rotation = Quaternion(-0.015577044, 6.4425066e-08, -0.018017799, 0.9997164)
+bones/21/position = Vector3(-1.4801438, 41.03822, 1.2796046)
+bones/21/rotation = Quaternion(0.3720765, 0.010141492, 0.10512785, 0.92217374)
+bones/22/position = Vector3(2.8630106, 12.424341, -11.3314905)
+bones/23/rotation = Quaternion(-0.002614, 0.004089, 0.298493, -0.054658)
+bones/24/position = Vector3(2.258406e-05, 189.33717, -3.102281e-06)
+bones/24/rotation = Quaternion(-0.062816076, 0.0070758206, -0.16996336, 0.98342085)
+bones/25/position = Vector3(2.5278132e-06, 90.70627, 5.1744587e-06)
+bones/25/rotation = Quaternion(0.5555955, 0.15136594, 0.042694967, 0.81644297)
+bones/27/position = Vector3(-2.4661958e-06, 48.96299, 5.06614e-07)
+bones/28/rotation = Quaternion(-0.0011670935, 0.0061232904, 0.99850875, 0.054235294)
+bones/29/position = Vector3(1.6772048e-05, 189.2966, -1.2508754e-07)
+bones/29/rotation = Quaternion(-0.06786923, -0.010840419, 0.16756648, 0.98346215)
+bones/30/rotation = Quaternion(0.54762805, -0.15482368, -0.040216442, 0.8212891)
+bones/31/position = Vector3(2.8676222e-06, 119.079926, 6.9047237e-06)
+bones/32/position = Vector3(2.061955e-06, 49.070675, -5.62517e-07)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="players" unique_id=1525022696]
+transform = Transform3D(-0.030682288, -0.03763131, -0.9988205, -0.03763131, 0.99862576, -0.03646801, 0.9988205, 0.03646801, -0.032056257, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="players/StaticBody3D" unique_id=391487660]
+transform = Transform3D(0.9999695, 3.5272387e-07, 0, -3.5278208e-07, 0.99996936, 0, 0, 2.3283064e-10, 0.9999996, -0.15736008, 4.293907, 0.43426514)
+shape = SubResource("BoxShape3D_m0brp")
+
+[node name="gun2" parent="." unique_id=792883759 instance=ExtResource("5_g86sx")]
+transform = Transform3D(-0.0016499108, -0.04997277, 0, 0.049776014, -0.0016434144, -0.0044325455, 0.004430131, -0.00014626609, 0.049803134, 19.933743, 5.4678593, -41.43081)
+
+[node name="Area3D" type="Area3D" parent="gun2" unique_id=1518591630]
+transform = Transform3D(3.9890552, 0.27772546, 0.101511955, -0.27773, 3.9903448, -0.0033515384, -0.10149956, -0.0037058555, 3.998711, -1.6475449, -4.505707, -21.648071)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="gun2/Area3D" unique_id=1406096327]
+transform = Transform3D(1, -1.8480932e-09, 0, 3.2232492e-07, 1, -2.3283064e-10, 1.4901161e-08, 0, 1.0000002, 1.415678, 1.6343079, 7.0053864)
+shape = SubResource("BoxShape3D_g86sx")
+
+[connection signal="body_entered" from="gun2/Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="alien_island4"]
+[editable path="players"]

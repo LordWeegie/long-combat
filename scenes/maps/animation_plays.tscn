@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://wvti8cfvw8fa"]
+
+[ext_resource type="Script" uid="uid://ceuobipvimqkn" path="res://scripts/animation_plays.gd" id="1_o72i8"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_68cmh"]
+file = "res://assets/player/teleport.ogv"
+
+[node name="AnimationPlays" type="Node2D" unique_id=2010260829]
+script = ExtResource("1_o72i8")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=959499153]
+offset_left = -633.0
+offset_top = -706.0
+offset_right = 1847.0
+offset_bottom = 2802.0
+stream = SubResource("VideoStreamTheora_68cmh")
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=141548800]
+position = Vector2(560, 2137)
+zoom = Vector2(0.5, 0.5)

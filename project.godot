@@ -14,11 +14,11 @@ version="1.0"
 csharp=false
 publicKey="9ee1efd744c6a0bb"
 privateKey="8d74148e4d069323"
+protectedMode=true
 
 [application]
 
 config/name="long_combat"
-run/main_scene="uid://bhr4wfin0i7ip"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -26,9 +26,18 @@ config/icon="res://icon.svg"
 
 GDSync="*uid://hheaujvoagqr"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GD-Sync/plugin.cfg", "res://addons/tube/plugin.cfg")
+enabled=PackedStringArray()
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 
