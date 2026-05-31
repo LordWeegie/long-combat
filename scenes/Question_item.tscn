@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dw5ne4frehg2e"]
+
+[ext_resource type="Script" uid="uid://c2imkndlxxd0r" path="res://scripts/question_item.gd" id="1_epf5p"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7hdba"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_epf5p"]
+
+[node name="QuestionItem" type="StaticBody3D" unique_id=291602001]
+transform = Transform3D(2.894945, 0, 0, 0, 1.5141549, 0, 0, 0, 0.35010308, 0, 0, 0)
+script = ExtResource("1_epf5p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1836428048]
+mesh = SubResource("BoxMesh_7hdba")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=33851056]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1, 0, 0, 0.5084247)
+text = "Hello world!"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1953053169]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_epf5p")

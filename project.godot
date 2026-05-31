@@ -19,6 +19,7 @@ protectedMode=true
 [application]
 
 config/name="long_combat"
+run/main_scene="uid://2iepm616hbgv"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -1,15 +1,34 @@
 [gd_scene format=3 uid="uid://ch4g8t83w53j0"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_kel6l"]
+[ext_resource type="Script" uid="uid://dikof746cbmeh" path="res://scripts/player/bullet.gd" id="1_2as5g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2as5g"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2as5g"]
+material = SubResource("StandardMaterial3D_2as5g")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kel6l"]
 
-[node name="Bullet" type="Node3D" unique_id=1006998025]
+[node name="Bullet" type="RigidBody3D" unique_id=1505305737]
+collision_layer = 2
+mass = 0.001
+gravity_scale = 0.0
+script = ExtResource("1_2as5g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1419150343]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_kel6l")
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = SubResource("SphereMesh_2as5g")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=659665233]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+[node name="Area3D" type="Area3D" parent="." unique_id=875672924]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=659665233]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 shape = SubResource("BoxShape3D_kel6l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1799680269]
+light_color = Color(1, 0, 0, 1)
+light_energy = 3.694
+light_volumetric_fog_energy = 11.614
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

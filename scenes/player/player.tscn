@@ -71,13 +71,21 @@ speed_scale = 2.0
 [node name="Camera3D" type="Camera3D" parent="head" unique_id=167896587]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.89467824, 0.17622018)
 
-[node name="RayCast3D" type="RayCast3D" parent="head/Camera3D" unique_id=781125663]
-target_position = Vector3(0, 0, -4.605)
+[node name="Label3D" type="Label3D" parent="head/Camera3D" unique_id=1015537460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4561117e-08, -0.3078624, -0.6241064)
+billboard = 1
+no_depth_test = true
+font_size = 10
+autowrap_mode = 3
+
+[node name="RayCast3D" type="RayCast3D" parent="head/Camera3D" unique_id=1400650627]
+transform = Transform3D(1, -8.742275e-08, 8.7489916e-08, 8.742275e-08, -0.0007679899, -0.9999997, 8.7489916e-08, 0.9999997, -0.0007679899, 0, 0, 0)
+target_position = Vector3(0, -29.8, 0)
 
 [node name="player_with_gun" parent="." unique_id=517120517 instance=ExtResource("3_gmlin")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="player_with_gun/Armature" parent_id_path=PackedInt32Array(517120517, 1884266074) index="0" unique_id=437744654]
+[node name="Skeleton3D" parent="player_with_gun/Armature" parent_id_path=PackedInt32Array(517120517, 19898265) index="0" unique_id=1099309659]
 bones/0/position = Vector3(-0.015946388, -5.21709, -363.2312)
 bones/0/rotation = Quaternion(0.70710707, -0.00011182221, -0.00011969003, -0.7071066)
 bones/1/rotation = Quaternion(0.008893743, 4.1001717e-06, -0.00016375193, 0.9999605)

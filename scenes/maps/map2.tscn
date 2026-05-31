@@ -5,21 +5,18 @@
 [ext_resource type="PackedScene" uid="uid://d3a2liyb8x0ay" path="res://scenes/player/player.tscn" id="2_33h1h"]
 [ext_resource type="PackedScene" uid="uid://cswee65fshuss" path="res://assets/player/players.glb" id="4_m0brp"]
 [ext_resource type="PackedScene" uid="uid://cir6t6xwlahe3" path="res://assets/items/gun.fbx" id="5_g86sx"]
+[ext_resource type="PackedScene" uid="uid://dw5ne4frehg2e" path="res://scenes/Question_item.tscn" id="6_jni2o"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_g2u6i"]
-sky_top_color = Color(0, 0, 1, 1)
-sky_horizon_color = Color(0.41959536, 0.4088111, 0.8401836, 1)
-ground_bottom_color = Color(0.31764707, 0.27450982, 1, 1)
-ground_horizon_color = Color(0.41959536, 0.4088111, 0.8401836, 1)
-
-[sub_resource type="Sky" id="Sky_33h1h"]
-sky_material = SubResource("ProceduralSkyMaterial_g2u6i")
+[sub_resource type="Sky" id="Sky_g86sx"]
 
 [sub_resource type="Environment" id="Environment_m0brp"]
 background_mode = 2
-sky = SubResource("Sky_33h1h")
+sky = SubResource("Sky_g86sx")
 tonemap_mode = 2
 glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1649
+volumetric_fog_albedo = Color(1, 0, 0, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g86sx"]
 height = 2.990265
@@ -30,6 +27,10 @@ size = Vector3(1, 9.752991, 6.2836304)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g86sx"]
 size = Vector3(3.1622314, 3.4053955, 4.4503784)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jni2o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_he8e3"]
 
 [node name="Map2" type="Node3D" unique_id=1492872750]
 script = ExtResource("1_33h1h")
@@ -45,8 +46,12 @@ environment = SubResource("Environment_m0brp")
 [node name="alien_island" parent="." unique_id=2010598015 instance=ExtResource("1_g2u6i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02480936, 0, 0.7372341)
 
-[node name="player" parent="." unique_id=1458099324 instance=ExtResource("2_33h1h")]
+[node name="player" parent="." unique_id=1458099324 node_paths=PackedStringArray("question2", "question3", "question4") instance=ExtResource("2_33h1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11725044, 3.7307532, 1.8077383)
+dialog_lines = Array[String](["Hello, it's me! The Devil!", "Answer these questions correctly to go back to earth!", "If you fail you go to hell (quiet yay)!", "Question 1: Which engine is open source", "Question 2: Which came first", "You won...okay...I lied, either way you go to hell!", "You lost! I'm just going to leave now."])
+question2 = NodePath("../Node3D/QuestionItem2")
+question3 = NodePath("../Node3D/QuestionItem4")
+question4 = NodePath("../Node3D/QuestionItem5")
 
 [node name="alien_island2" parent="." unique_id=651172948 instance=ExtResource("1_g2u6i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.765394, 0, 1.3238916)
@@ -62,7 +67,7 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.15752554, 2
 shape = SubResource("CylinderShape3D_g86sx")
 
 [node name="players" parent="." unique_id=1069411818 instance=ExtResource("4_m0brp")]
-transform = Transform3D(0.00729735, -0.19986674, -4.7184888e-11, 0.013294676, 0.0004854014, 0.19955702, -0.19942412, -0.0072811893, 0.013303533, 20.871532, 5.4892116, -42.51559)
+transform = Transform3D(0.007328742, -0.1998656, 0, 0.199627, 0.007319991, -0.009769953, 0.009763389, 0.0003580073, 0.1997612, 20.871532, 5.4892116, -42.51559)
 
 [node name="Skeleton3D" parent="players/Armature" parent_id_path=PackedInt32Array(1069411818, 655339122) index="0" unique_id=841794131]
 bones/0/position = Vector3(-0.015946388, -5.21709, -363.2312)
@@ -84,7 +89,7 @@ bones/13/rotation = Quaternion(0.0589973, 0.0017134476, -0.22269048, 0.9731009)
 bones/14/position = Vector3(-6.4925437, 13.85155, -1.613533)
 bones/15/rotation = Quaternion(0.53035253, -0.46758366, 0.53090763, 0.4671498)
 bones/16/position = Vector3(1.2036883e-06, 67.11831, 2.5022033e-05)
-bones/16/rotation = Quaternion(0.06365, -0.001086, -0.011605, 0.811922)
+bones/16/rotation = Quaternion(0.5836499, -0.0010862498, -0.011604759, 0.8119218)
 bones/17/position = Vector3(-6.7269525e-07, 99.197105, -9.565487e-06)
 bones/17/rotation = Quaternion(-4.1178924e-07, -0.00010639885, -1.17179315e-08, 1)
 bones/18/position = Vector3(-1.2879179e-06, 135.96376, 7.826213e-06)
@@ -96,7 +101,7 @@ bones/20/rotation = Quaternion(-0.015577044, 6.4425066e-08, -0.018017799, 0.9997
 bones/21/position = Vector3(-1.4801438, 41.03822, 1.2796046)
 bones/21/rotation = Quaternion(0.3720765, 0.010141492, 0.10512785, 0.92217374)
 bones/22/position = Vector3(2.8630106, 12.424341, -11.3314905)
-bones/23/rotation = Quaternion(-0.002614, 0.004089, 0.298493, -0.054658)
+bones/23/rotation = Quaternion(-0.0026139673, 0.0040885736, 0.9984933, -0.054658093)
 bones/24/position = Vector3(2.258406e-05, 189.33717, -3.102281e-06)
 bones/24/rotation = Quaternion(-0.062816076, 0.0070758206, -0.16996336, 0.98342085)
 bones/25/position = Vector3(2.5278132e-06, 90.70627, 5.1744587e-06)
@@ -110,13 +115,13 @@ bones/31/position = Vector3(2.8676222e-06, 119.079926, 6.9047237e-06)
 bones/32/position = Vector3(2.061955e-06, 49.070675, -5.62517e-07)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="players" unique_id=1525022696]
-transform = Transform3D(-0.030682288, -0.03763131, -0.9988205, -0.03763131, 0.99862576, -0.03646801, 0.9988205, 0.03646801, -0.032056257, 0, 0, 0)
+transform = Transform3D(0.9992891, -0.00019396626, 0.037693977, 0.00013606861, 0.99999845, 0.0015392698, -0.037694238, -0.001533042, 0.99928844, 0.13191223, -3.5973892, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="players/StaticBody3D" unique_id=391487660]
 transform = Transform3D(0.9999695, 3.5272387e-07, 0, -3.5278208e-07, 0.99996936, 0, 0, 2.3283064e-10, 0.9999996, -0.15736008, 4.293907, 0.43426514)
 shape = SubResource("BoxShape3D_m0brp")
 
-[node name="gun2" parent="." unique_id=792883759 instance=ExtResource("5_g86sx")]
+[node name="gun2" parent="." unique_id=1494397800 instance=ExtResource("5_g86sx")]
 transform = Transform3D(-0.0016499108, -0.04997277, 0, 0.049776014, -0.0016434144, -0.0044325455, 0.004430131, -0.00014626609, 0.049803134, 19.933743, 5.4678593, -41.43081)
 
 [node name="Area3D" type="Area3D" parent="gun2" unique_id=1518591630]
@@ -126,7 +131,51 @@ transform = Transform3D(3.9890552, 0.27772546, 0.101511955, -0.27773, 3.9903448,
 transform = Transform3D(1, -1.8480932e-09, 0, 3.2232492e-07, 1, -2.3283064e-10, 1.4901161e-08, 0, 1.0000002, 1.415678, 1.6343079, 7.0053864)
 shape = SubResource("BoxShape3D_g86sx")
 
+[node name="respawn" type="Area3D" parent="." unique_id=909739728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.9785, 0, -174.54053)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="respawn" unique_id=538222303]
+transform = Transform3D(301.37015, 0, 0, 0, 1, 0, 0, 0, 380.83307, 0, -10.725586, 0)
+shape = SubResource("BoxShape3D_jni2o")
+
+[node name="players3" parent="." unique_id=735119212 instance=ExtResource("4_m0brp")]
+transform = Transform3D(0.004189208, 0.19495502, 0, -0.19495502, 0.004189208, 0, 0, 0, 0.19500002, 24.505568, 5.682127, -45.59143)
+
+[node name="Skeleton3D" parent="players3/Armature" parent_id_path=PackedInt32Array(735119212, 655339122) index="0" unique_id=841794131]
+transform = Transform3D(0.99895954, 0, -0.045607105, 0, 1, 0, 0.045607105, 0, 0.99895954, 22.706543, 0, 0.4873047)
+bones/9/rotation = Quaternion(0.639562, -0.002851, 0.020097, 0.989881)
+bones/17/rotation = Quaternion(-0.975183, -0.000105, 0.000744, 0.990125)
+bones/23/rotation = Quaternion(-0.002029, 0.113616, 1.059428, -0.175409)
+bones/25/rotation = Quaternion(-0.147298, 0.093794, -0.066178, 0.811687)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="players3" unique_id=188357372]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="players3/StaticBody3D" unique_id=1868670935]
+transform = Transform3D(1.1860859, -1.4901161e-08, 0, 1.8626451e-09, 9.659965, 0, 0, 0, 6.829336, 0, 0, 0)
+shape = SubResource("BoxShape3D_he8e3")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=90673756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5401611, 0, -14.136658)
+
+[node name="QuestionItem" parent="Node3D" unique_id=1733863993 groups=["question_object"] instance=ExtResource("6_jni2o")]
+transform = Transform3D(2.894945, 0, 0, 0, 1.5141549, 0, 0, 0, 0.35010308, 23.259657, 11.461537, -37.893593)
+options = Array[String](["Unity", "quake", "linux"])
+
+[node name="QuestionItem2" parent="Node3D" unique_id=800020466 groups=["question_object"] instance=ExtResource("6_jni2o")]
+transform = Transform3D(2.894945, 0, 0, 0, 1.5141549, 0, 0, 0, 0.35010308, 16.756405, 11.461537, -37.893593)
+options = Array[String](["UE 5", "doom", "freebsd"])
+
+[node name="QuestionItem4" parent="Node3D" unique_id=1142997589 groups=["question_object"] instance=ExtResource("6_jni2o")]
+transform = Transform3D(2.894945, 0, 0, 0, 1.5141549, 0, 0, 0, 0.35010308, 16.756405, 7.7629366, -37.893593)
+options = Array[String](["Cry engine", "half-life", "windows"])
+
+[node name="QuestionItem5" parent="Node3D" unique_id=987913697 groups=["question_object"] instance=ExtResource("6_jni2o")]
+transform = Transform3D(2.894945, 0, 0, 0, 1.5141549, 0, 0, 0, 0.35010308, 23.259657, 7.7629366, -37.893593)
+options = Array[String](["Godot", "Unreal Gold", "OS X"])
+
 [connection signal="body_entered" from="gun2/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="respawn" to="." method="_on_respawn_body_entered"]
 
 [editable path="alien_island4"]
 [editable path="players"]
+[editable path="players3"]

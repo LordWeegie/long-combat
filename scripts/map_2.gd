@@ -12,3 +12,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		$gun2.queue_free()
 		print("Has gun")
 		$player.has_gun = true
+
+
+func _on_respawn_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		get_tree().reload_current_scene()
